@@ -27,7 +27,7 @@ def is_unique_chars_sort(string):
         Space Complexity: O(n)
     """
 
-    sorted_string = "".join(sorted(a)) # Sort is not in place
+    sorted_string = "".join(sorted(string)) # Sort is not in place
     for i in range(len(sorted_string) - 1):
         if sorted_string[i] == sorted_string[i+1]:
             return False
@@ -70,3 +70,62 @@ def is_unique_chars_bit_vector(string):
             return False
         checker |= (1 << val)
     return True
+
+
+class TestUnique(unittest.TestCase):
+
+    def setUp(self):
+        self.positive_data = ["python", "django", ""]
+        self.negative_data = ["javascript", "hello"]
+
+    def test_is_unique_chars_compare(self):
+        print "Started testing 'test_is_unique_chars_compare' "
+        
+        print "Running test case for positive data"
+        for string in self.positive_data:
+            self.assertTrue(is_unique_chars_compare(string))
+
+        print "Running test case for negative data"
+        for string in self.negative_data:
+            self.assertFalse(is_unique_chars_compare(string))
+
+
+    def test_is_unique_chars_sort(self):
+        print "Started testing 'is_unique_chars_sort' "
+        
+        print "Running test case for positive data"
+        for string in self.positive_data:
+            self.assertTrue(is_unique_chars_sort(string))
+
+        print "Running test case for negative data"
+        for string in self.negative_data:
+            self.assertFalse(is_unique_chars_sort(string))
+
+    def test_is_unique_chars_map(self):
+        print "Started testing 'is_unique_chars_map' "
+        
+        print "Running test case for positive data"
+        for string in self.positive_data:
+            self.assertTrue(is_unique_chars_map(string))
+
+        print "Running test case for negative data"
+        for string in self.negative_data:
+            self.assertFalse(is_unique_chars_map(string))
+
+    def test_is_unique_chars_bit_vector(self):
+        print "Started testing 'is_unique_chars_bit_vector' "
+        
+        print "Running test case for positive data"
+        for string in self.positive_data:
+            self.assertTrue(is_unique_chars_bit_vector(string))
+
+        print "Running test case for negative data"
+        for string in self.negative_data:
+            self.assertFalse(is_unique_chars_bit_vector(string))
+
+
+if __name__ == '__main___':
+    unittest.main()
+
+
+
