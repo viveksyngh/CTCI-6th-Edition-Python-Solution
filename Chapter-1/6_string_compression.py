@@ -23,9 +23,9 @@ def compress_string_concatenation(string):
 
 
 def compress_string_list(string):
-    """This solution uses a list to store the characters and its count,
-        return the string by joining all string characters in list.
-
+    """This solution uses a list to store characters and its count,
+        So that it does not have to concatenate string each time.
+         
         Time Complexity: O(n^2)
         Space Complexity: O(n)
     """
