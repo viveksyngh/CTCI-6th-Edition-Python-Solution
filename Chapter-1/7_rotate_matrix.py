@@ -8,6 +8,9 @@ import unittest
 def rotate_matrix(matrix):
     """This solution rotates the matrix by 90 degree, 
         without using any extra space.
+
+        Time Complexity: O(N^2)
+        Space Complexity: O(1)
     """
 
     if len(matrix) == 0 or len(matrix) != len(matrix[0]):
@@ -20,13 +23,13 @@ def rotate_matrix(matrix):
         for i in range(first, last):
             offset = i - layer
             top = matrix[first][i]
-
+            # left -> top
             matrix[first][i] = matrix[last - offset][first]
-
+            # bottom -> left
             matrix[last - offset][first] = matrix[last][last - offset]
-
+            # right -> bottom
             matrix[last][last - offset] = matrix[i][last]
-
+            # top -> right
             matrix[i][last] = top
     return True
 
