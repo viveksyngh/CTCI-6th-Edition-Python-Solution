@@ -75,11 +75,11 @@ class MinStack2(object):
 		else : 
 			if self.stack.peek() > item:
 				self.stack.push(item)
-		self.items.push(item)
+		self.items.append(item)
 
 	def pop(self, item):
 		if not self.items:
-			raise IndexError("Stack in empty")
+			raise IndexError("Stack in empty.")
 		if self.items[-1] == self.stack.peek():
 			self.stack.pop()
 		return self.items.pop()
@@ -89,7 +89,3 @@ class MinStack2(object):
 
 	def is_empty(self):
 		return not bool(self.items)
-	
-
-
-
