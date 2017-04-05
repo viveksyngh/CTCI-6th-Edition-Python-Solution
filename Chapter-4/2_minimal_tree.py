@@ -14,7 +14,7 @@ def build_minimal_tree(array):
     mid = len(array)/2
     node = Node(array[mid])
     node.left = build_minimal_tree(array[0 : mid - 1])
-    node.right = build_minimal_tree(array[mid + 1 : 0])
+    node.right = build_minimal_tree(array[mid + 1 : ])
     return node
 
 

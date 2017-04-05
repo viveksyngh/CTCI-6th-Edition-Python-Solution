@@ -1,5 +1,5 @@
 """Given a directed graph, Design an algorithm to find out whether
-    there is a router between two nodes"""
+    there is a route between two nodes"""
 
 from collections import deque
 
