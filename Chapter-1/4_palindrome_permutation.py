@@ -84,3 +84,6 @@ class TestPallindromePermutation(unittest.TestCase):
         self.assertTrue(is_palindrome_permutation_hash_table(self.true_input))
         self.assertFalse(is_palindrome_permutation_hash_table(self.false_input))
 
+
+if __name__ == "__main__":
+    unittest.main()

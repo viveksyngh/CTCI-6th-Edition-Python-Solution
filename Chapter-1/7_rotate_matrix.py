@@ -1,4 +1,4 @@
-# Given an image repersented by NxN matrix, where each image is 4 bytes,
+# Given an image represented by NxN matrix, where each image is 4 bytes,
 # Write a method to image by 90 degrees
 
 
@@ -6,18 +6,19 @@ import unittest
 
 
 def rotate_matrix(matrix):
-    """This solution rotates the matrix by 90 degree, 
-        without using any extra space.
+    """
+    This solution rotates the matrix by 90 degree, 
+    without using any extra space.
 
-        Time Complexity: O(N^2)
-        Space Complexity: O(1)
+    Time Complexity: O(N^2)
+    Space Complexity: O(1)
     """
 
     if len(matrix) == 0 or len(matrix) != len(matrix[0]):
         return False
 
     n = len(matrix)
-    for layer in range(n/2):
+    for layer in range(n / 2):
         first = layer
         last = n - 1 - layer
         for i in range(first, last):
@@ -35,17 +36,13 @@ def rotate_matrix(matrix):
 
 
 class TestRotateMatrix(unittest.TestCase):
-
     def setUp(self):
-        self.input = [[1, 2, 3, 4], 
-                      [5, 6, 7, 8], 
-                      [9, 10, 11, 12], 
-                      [13, 14, 15, 16]]
-        self.output = [[13, 9, 5, 1], 
-                       [14, 10, 6, 2], 
-                       [15, 11, 7, 3], 
-                       [16, 12, 8, 4]]
+        self.input = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+        self.output = [[13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3], [16, 12, 8, 4]]
 
     def test_rotate_matrix(self):
         self.assertTrue(rotate_matrix(self.input))
 
+
+if __name__ == "__main__":
+    unittest.main()

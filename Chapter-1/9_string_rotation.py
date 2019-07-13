@@ -1,7 +1,7 @@
 # Assume you have a method is_substring which checks,
 # if one word is a substring of another. Given two string,
 # s1 and s2, write code to check if s2 is a rotation of s1
-# using only one call to ss_subtring
+# using only one call to  is_substring
 
 import unittest
 
@@ -21,7 +21,6 @@ def is_substring(string1, string2):
 
 
 class TestStringRotation(unittest.TestCase):
-
     def setUp(self):
         self.true_input = ("waterbottle", "erbottlewat")
         self.false_input = ("hello", "alloh")
@@ -29,3 +28,7 @@ class TestStringRotation(unittest.TestCase):
     def test_is_string_rotation(self):
         self.assertTrue(is_string_rotation(self.true_input[0], self.true_input[1]))
         self.assertFalse(is_string_rotation(self.false_input[0], self.false_input[1]))
+
+
+if __name__ == "__main__":
+    unittest.main()
