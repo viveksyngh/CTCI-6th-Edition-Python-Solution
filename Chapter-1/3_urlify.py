@@ -3,14 +3,15 @@
 # to hold the additional characters and you are given true lengths of string.
 import unittest
 
+
 def urlify_concatenate(string, true_length):
-    """This solution traverse through original string and 
-       create a new string by appending characters if it is space then,
-       it appends "%20".
+    """
+    This solution traverse through original string and 
+    create a new string by appending characters if it is space then,
+    it appends "%20".
 
-       Time Complexity: O(n^2), because string is immutable
-       Space Complexity: O(n)
-
+    Time Complexity: O(n^2), because string is immutable
+    Space Complexity: O(n)
     """
 
     result_string = ""
@@ -23,19 +24,20 @@ def urlify_concatenate(string, true_length):
 
 
 def urlify_list(string, true_length):
-    """This solution converts the sting into list and then 
-        edits the string in backward direction by replacing 
-        space with "%20".
+    """
+    This solution converts the sting into list and then 
+    edits the string in backward direction by replacing 
+    space with "%20".
 
-        Time Complexity: O(n)
-        Space Complexity: O(n)
+    Time Complexity: O(n)
+    Space Complexity: O(n)
     """
 
     char_list = list(string)
     index = len(string)
-    for i in range(true_length -1 , -1 , -1):
+    for i in range(true_length - 1, -1, -1):
         if string[i] == " ":
-            char_list[index - 1] = '0'
+            char_list[index - 1] = "0"
             char_list[index - 2] = "2"
             char_list[index - 3] = "%"
             index -= 3
@@ -46,7 +48,6 @@ def urlify_list(string, true_length):
 
 
 class TestURLify(unittest.TestCase):
-
     def setUp(self):
         self.input = ("Mr Jhon Smith    ", 13)
         self.result = "Mr%20Jhon%20Smith"
@@ -58,5 +59,5 @@ class TestURLify(unittest.TestCase):
         self.assertEqual(urlify_list(*self.input), self.result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
