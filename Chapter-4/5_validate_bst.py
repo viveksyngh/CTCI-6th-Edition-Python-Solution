@@ -1,7 +1,8 @@
 """Implement a function to check if a binary tree in binary search tree."""
 
+import unittest
+import math
 class Node:
-
     def __init__(self, data):
         self.data = data
         self.left = None
@@ -24,13 +25,20 @@ def is_bst_better(root, Min, Max):
     return is_bst_better(root.left, Min, root.data) and is_bst_better(root.right, root.data, Max)
 
 
-if __name__ == '__main__':
-    root = Node(4)
-    root.left = Node(2)
-    root.left.left = Node(1)
-    root.left.right = Node(3)
-    root.right = Node(6)
-    root.right.left = Node(5)
-    root.right.right = Node(7)
-    print is_bst(root)
-    print is_bst_better(root, None, None)
+
+class TestIsBST(unittest.TestCase):
+    def setUp(self):
+        self.root = Node(4)
+        self.root.left = Node(2)
+        self.root.left.left = Node(1)
+        self.root.left.right = Node(3)
+        self.root.right = Node(6)
+        self.root.right.left = Node(5)
+        self.root.right.right = Node(7)
+
+    def test_positive(self):
+        self.assertEqual(is_bst_better(self.root, -1 * math.inf, math.inf), True)
+
+
+if __name__ == "__main__":
+    unittest.main()

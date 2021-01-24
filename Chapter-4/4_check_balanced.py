@@ -51,5 +51,5 @@ if __name__ == '__main__':
     root.right = Node(6)
     root.right.left = Node(5)
     root.right.right = Node(7)
-    print check_balanced(root)
-    print check_balanced_1(root)
+    print(check_balanced(root))
+    print(check_balanced_1(root))

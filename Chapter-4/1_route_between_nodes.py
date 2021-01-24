@@ -1,7 +1,11 @@
 """Given a directed graph, Design an algorithm to find out whether
     there is a route between two nodes"""
 
+
+"""This problem can be solved using any generic graph traversal algorithm (BFS or DFS)"""
+
 from collections import deque
+import unittest
 
 UNVISITED, VISITING, VISISTED = 0, 1, 2
 
@@ -29,7 +33,7 @@ class Graph:
         start.neighbours.append(end)
 
 
-def is_routes(graph, start, end):
+def is_routes_bfs(graph, start, end):
     if start == end:
         return True
     for node in graph.get_all_nodes():
@@ -40,11 +44,7 @@ def is_routes(graph, start, end):
     queue.append(start)
     
     while queue:
-        try:
-            node = queue.popleft()
-        except IndexError, e:
-            node = None
-        
+        node = queue.popleft()
         if node:
             for item in node.neighbours:
                 if item.state == UNVISITED:
@@ -57,23 +57,73 @@ def is_routes(graph, start, end):
     return False
 
 
-if __name__ == '__main__':
-    graph = Graph()
-    a = Node("a")
-    b = Node("b")
-    c = Node("c")
-    d = Node("d")
-    e = Node("e")
-    f = Node("f")
+def is_routes_dfs(graph, start, end):
+    for node in graph.get_all_nodes():
+        node.state = UNVISITED
+    
+    return dfs(graph, start, end)
 
-    graph.add_edge(a, b)
-    graph.add_edge(a, c)
-    graph.add_edge(c, a)
-    graph.add_edge(c, d)
-    graph.add_edge(a, e)
-    graph.add_edge(f, d)
+def dfs(graph, curr, end):
+    if curr == end:
+        return True
+    
+    curr.state = VISISTED
 
-    print is_routes(graph, a, d)
-    print is_routes(graph, a, c)
-    print is_routes(graph, a, b)
-    print is_routes(graph, a, f)
+    for node in curr.neighbours:
+        if node.state == UNVISITED:
+            if dfs(graph, node, end):
+                return True
+    return False
+    
+class TestBFS(unittest.TestCase):
+    def setUp(self):
+        self.graph = Graph()
+        self.a = Node("a")
+        self.b = Node("b")
+        self.c = Node("c")
+        self.d = Node("d")
+        self.e = Node("e")
+        self.f = Node("f")
+
+        self.graph.add_edge(self.a, self.b)
+        self.graph.add_edge(self.a, self.c)
+        self.graph.add_edge(self.c, self.a)
+        self.graph.add_edge(self.c, self.d)
+        self.graph.add_edge(self.a, self.e)
+        self.graph.add_edge(self.f, self.d)
+    
+    def test_positive(self):
+        self.assertEqual(is_routes_bfs(self.graph, self.a, self.d), True)
+        self.assertEqual(is_routes_bfs(self.graph, self.a, self.c), True)
+        self.assertEqual(is_routes_bfs(self.graph, self.a, self.b), True)
+    
+    def test_negative(self):
+      self.assertEqual(is_routes_bfs(self.graph, self.a, self.f), False)
+
+class TestDFS(unittest.TestCase):
+    def setUp(self):
+        self.graph = Graph()
+        self.a = Node("a")
+        self.b = Node("b")
+        self.c = Node("c")
+        self.d = Node("d")
+        self.e = Node("e")
+        self.f = Node("f")
+
+        self.graph.add_edge(self.a, self.b)
+        self.graph.add_edge(self.a, self.c)
+        self.graph.add_edge(self.c, self.a)
+        self.graph.add_edge(self.c, self.d)
+        self.graph.add_edge(self.a, self.e)
+        self.graph.add_edge(self.f, self.d)
+    
+    def test_positive(self):
+        self.assertEqual(is_routes_dfs(self.graph, self.a, self.d), True)
+        self.assertEqual(is_routes_dfs(self.graph, self.a, self.c), True)
+        self.assertEqual(is_routes_dfs(self.graph, self.a, self.b), True)
+    
+    def test_negative(self):
+      self.assertEqual(is_routes_dfs(self.graph, self.a, self.f), False)
+
+if __name__ == "__main__":
+    unittest.main()

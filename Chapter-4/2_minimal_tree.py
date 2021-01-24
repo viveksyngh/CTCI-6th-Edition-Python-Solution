@@ -19,6 +19,6 @@ def build_minimal_tree(array):
 
 
 if __name__ == '__main__':
-    print build_minimal_tree([1])
-    print build_minimal_tree([1, 2, 3, 4, 5])
-    print build_minimal_tree([1, 2, 3, 4, 5, 6])
+    print(build_minimal_tree([1]))
+    print(build_minimal_tree([1, 2, 3, 4, 5]))
+    print(build_minimal_tree([1, 2, 3, 4, 5, 6]))

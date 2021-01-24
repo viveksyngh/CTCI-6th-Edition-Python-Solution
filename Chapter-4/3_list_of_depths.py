@@ -19,9 +19,9 @@ class LinkedList:
     def print_list(self):
         node = self.head
         while node:
-            print node.data, ' -> ',
+            print(node.data, ' -> ')
             node = node.next
-        print 'null'
+        print('null')
         
 
 class Node:
