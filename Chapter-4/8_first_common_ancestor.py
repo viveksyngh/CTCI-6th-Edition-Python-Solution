@@ -25,4 +25,4 @@ def covers(root, p):
         return False
     if root == p:
         return True
-    return covers(root.left, p) or covers(root.right, q)
+    return covers(root.left, p) or covers(root.right, p)
